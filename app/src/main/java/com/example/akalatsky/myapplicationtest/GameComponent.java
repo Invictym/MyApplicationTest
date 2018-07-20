@@ -2,7 +2,7 @@ package com.example.akalatsky.myapplicationtest;
 
 import dagger.Component;
 
-@Component(modules  = TestModul.class)
+@Component(modules = TestClModule.class)
 public interface GameComponent {
-    void inject(TestCL obj);
+    TestCL inject();
 }

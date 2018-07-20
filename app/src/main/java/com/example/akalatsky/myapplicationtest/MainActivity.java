@@ -2,6 +2,8 @@ package com.example.akalatsky.myapplicationtest;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import javax.inject.Inject;
 
@@ -14,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        DaggerGameComponent.create().inject(testCL);
+        testCL = DaggerGameComponent.create().inject();
 
-        System.out.println(testCL);
+        TextView textView = (TextView) findViewById(R.id.textView);
+        textView.setText(testCL.name + "//" + testCL.name2 +  "//" + testCL.year);
+        System.out.println("Test " + testCL.name + "//" + testCL.name2 +  "//" + testCL.year);
 
     }
 }
