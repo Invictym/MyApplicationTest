@@ -7,10 +7,15 @@ import android.widget.TextView;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public class MainActivity extends AppCompatActivity {
 
     @Inject
     TestCL testCL;
+
+    @BindView(R.id.textView) TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +23,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         testCL = DaggerGameComponent.create().inject();
 
-        TextView textView = (TextView) findViewById(R.id.textView);
         textView.setText(testCL.name + "//" + testCL.name2 +  "//" + testCL.year);
         System.out.println("Test " + testCL.name + "//" + testCL.name2 +  "//" + testCL.year);
 
+    }
+
+    @OnClick(R.id.textView)
+    void onTextClick() {
+        textView.setText("POSLE CLIKA");
     }
 }
